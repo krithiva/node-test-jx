@@ -1,0 +1,6 @@
+projectKey=node-http-demo1
+serverUrl=http://35.188.108.66:9000
+serverVersion=7.6.0.21501
+dashboardUrl=http://35.188.108.66:9000/dashboard?id=node-http-demo1
+ceTaskId=AWlI1xt2N8kqHQF_TtYh
+ceTaskUrl=http://35.188.108.66:9000/api/ce/task?id=AWlI1xt2N8kqHQF_TtYh
