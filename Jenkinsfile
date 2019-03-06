@@ -73,6 +73,7 @@ pipeline {
 
             sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
 			sh "docker tag $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION) gcr.io/lloyds-open-banking-199331/node-http-demo1:\$(cat VERSION)"
+			sh "gcloud auth configure-docker"
             sh "gcloud docker -- push gcr.io/lloyds-open-banking-199331/node-http-demo1:\$(cat VERSION)"
 		  }
         }
