@@ -72,7 +72,9 @@ pipeline {
             sh 'export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml'
 
             sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
-          }
+			sh "docker tag $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION) gcr.io/lloyds-open-banking-199331/node-http-demo1:\$(cat VERSION)"
+            sh "docker push gcr.io/lloyds-open-banking-199331/node-http-demo1:\$(cat VERSION)"
+		  }
         }
       }
       stage('Promote to Environments') {
@@ -89,8 +91,6 @@ pipeline {
 
               // promote through all 'Auto' promotion Environments
               sh 'jx promote -b --all-auto --timeout 1h --version \$(cat ../../VERSION)'
-			  sh "docker tag \$JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST:\$JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT/$ORG/$APP_NAME:\$(cat VERSION) gcr.io/lloyds-open-banking-199331/node-http-demo1:latest"
-              sh "docker push gcr.io/lloyds-open-banking-199331/node-http-demo1:latest"
             }
           }
         }
