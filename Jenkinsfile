@@ -46,16 +46,7 @@ pipeline {
             }
         }
         }
-      stage('Sonar') {
-         steps {
-         container('nodejs') {
-          sh "npm install sonarqube-scanner --save-dev"
-          sh "npm run sonar"
-        }
-      }
-      }
-
-      stage('Build Release') {
+     stage('Build Release') {
         when {
           branch 'master'
         }
