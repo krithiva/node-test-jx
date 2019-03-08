@@ -1,0 +1,21 @@
+labels:
+  Deploy%20to%20Test:
+    environment: default
+  deploy-to-test:
+    environment: default
+    description: A default environment based on Docker
+    namespace: default
+    transient_environment: true
+    auto_merge: false
+    required_contexts:
+    payload:
+  Deploy%20to%20Dev:
+    environment: dev
+  deploy-to-dev:
+    environment: dev
+    description: A dev environment based on Docker
+    namespace: dev
+    transient_environment: true
+    auto_merge: false
+    required_contexts:
+    payload:  
